@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Projects — Suraj Bhatt</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <span class="brand">SURAJ BHATT</span>
+    <span class="links">
+      <a href="index.html">Home</a>
+      <a href="experience.html">Experience</a>
+      <a href="projects.html" class="active">Projects</a>
+      <a href="conferences.html">Conferences</a>
+      <a href="skills.html">Skills</a>
+      <a href="certificates.html">Credentials</a>
+      <a href="contact.html">Contact</a>
+    </span>
+  </div>
+</nav>
+
+<div class="banner">
+  <div class="wrap">
+    <h1>Projects</h1>
+    <p>Selected structural and civil engineering work.</p>
+  </div>
+</div>
+
+<main>
+  <div class="section">
+    <div class="wrap">
+
+      <h2>RCC Bridge over Khageri Khola, Nepal</h2>
+      <p class="sub">Final-year design project · Bachelor of Civil Engineering</p>
+
+      <div class="carousel" id="bridge">
+        <div class="slides" id="bridgeSlides">
+          <img src="proj/bridge1.jpg" alt="Bridge project site visit with the team" />
+          <img src="proj/bridge2.jpg" alt="Project team at the bridge site" />
+          <img src="proj/bridge3.jpg" alt="Khageri Khola bridge project" />
+        </div>
+        <button class="arrow prev" onclick="bridgeMove(-1)" aria-label="Previous">&#8249;</button>
+        <button class="arrow next" onclick="bridgeMove(1)" aria-label="Next">&#8250;</button>
+        <div class="dots" id="bridgeDots">
+          <span class="on" onclick="bridgeGo(0)"></span>
+          <span onclick="bridgeGo(1)"></span>
+          <span onclick="bridgeGo(2)"></span>
+        </div>
+      </div>
+
+      <p class="body" style="margin-top:22px">For my final-year project, I worked in a six-member team to design a reinforced concrete (RCC) T-beam bridge over the Khageri Khola. The work covered the full design cycle: hydrological and hydraulic assessment of the river to fix the span and clearance, a geotechnical review of the site, and structural design of the superstructure (deck slab and T-beam girders), the bearings, and the substructure (piers, abutments, and foundations). We analyzed the structure for IRC vehicle loading and detailed the reinforcement in line with IS and NBC design codes, then prepared the engineering drawings and project report. I also took part in the site visit shown above, where we studied a comparable bridge under construction to connect our design work to real field conditions.</p>
+
+      <h2 style="margin-top:48px">9-Story RC Building, New Road, Kathmandu</h2>
+      <p class="sub">Construction supervision · JMR Construction</p>
+      <div class="proj" style="max-width:640px">
+        <div class="body">
+          <span class="tag">Construction</span>
+          <h3>Reinforced concrete multi-story building</h3>
+          <ul>
+            <li>Supervised construction of a 9-story reinforced concrete building (project value ≈ NPR 100 million / 10 crore).</li>
+            <li>Oversaw quality control, scheduling, and code compliance on site.</li>
+            <li>Prepared bar bending schedules and progress documentation.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="note">Want to add more? Project drawings, ETABS/SAP2000 model screenshots, or more site photos make a structural portfolio stronger. Drop the files in the folder and I will place them.</div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">© <span id="yr"></span> Suraj Bhatt · Structural &amp; Civil Engineer · Tempe, Arizona</div>
+</footer>
+<script>
+  document.getElementById('yr').textContent=new Date().getFullYear();
+  var bridgeIdx=0;
+  function bridgeRender(){
+    document.getElementById('bridgeSlides').style.transform='translateX('+(-bridgeIdx*100)+'%)';
+    var dots=document.querySelectorAll('#bridgeDots span');
+    dots.forEach(function(d,i){d.className=(i===bridgeIdx)?'on':'';});
+  }
+  function bridgeMove(step){
+    var n=document.querySelectorAll('#bridgeSlides img').length;
+    bridgeIdx=(bridgeIdx+step+n)%n; bridgeRender();
+  }
+  function bridgeGo(i){bridgeIdx=i;bridgeRender();}
+</script>
+</body>
+</html>
